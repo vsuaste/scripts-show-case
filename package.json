@@ -1,0 +1,19 @@
+{
+  "name": "find-taxonid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "find_taxonId.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "csvjson": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "papaparse": "^4.6.3",
+    "stream": "^0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Veronica Suaste",
+  "license": "ISC"
+}

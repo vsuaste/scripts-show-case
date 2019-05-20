@@ -14,26 +14,26 @@ const axios = require('axios');
 **/
 
 // query name for obtaining all records of the model which record will be updated
-let query_all_first = process.argv[2];  //"individuals";
+let query_all_first = process.argv[2];  //"individuals"; //
 // attribute by which the record to be updated will be found
-let column_lookup_first = process.argv[3]; //"name";
+let column_lookup_first = process.argv[3]; //"name"; //
 
 // query name for obtaining all records of the model which record will be the associated one
-let query_all_second = process.argv[4]; //"accessions";
+let query_all_second = process.argv[4]; //"accessions"; //"fieldUnits";  //
 // attribute by which the record will be found
-let column_lookup_second = process.argv[5]; //"accession_id";
+let column_lookup_second = process.argv[5]; //"accession_id"; //"field_name"; //
 // name of the column in the temporary file that behaves as foreignKey
-let column_local_association = process.argv[6];  //"accession_idlocal";
+let column_local_association = process.argv[6];  //"accession_idlocal"; //"field_unit_idlocal"; //
 
 // query name to update a record
-let update_query = process.argv[7]; //"updateIndividual";
+let update_query = process.argv[7]; //"updateIndividual"; //
 // attribute name to be updated
-let foreignKey = process.argv[8];  //"accessionId";
+let foreignKey = process.argv[8];  //"accessionId";//"field_unit_id"; //
 
 // temporary file to be processed
-let input_file = process.argv[9];  //"associate_individuals_test.csv";
+let input_file = process.argv[9];  //"../tablas_con_datos/teocintles_individual.csv"; //
 // server url
-let server_url = process.argv[10];  //"http://localhost:3000/graphql";
+let server_url = process.argv[10];  //"http://localhost:3000/graphql";  //
 
 
 let data = fs.readFileSync(path.join(__dirname, input_file), { encoding : 'utf8'});
@@ -107,8 +107,8 @@ const updateAssociation = async () =>{
   await asyncForEach(results.data, async record_data =>{
 
     try{
-      let first_record = await searchByLocalAttribute(record_data[column_local_association], query_all_first, column_lookup_first);
-      let second_record = await searchByLocalAttribute(record_data[column_lookup_second], query_all_second, column_lookup_second);
+      let first_record = await searchByLocalAttribute(record_data[column_lookup_first], query_all_first, column_lookup_first);
+      let second_record = await searchByLocalAttribute(record_data[column_local_association], query_all_second, column_lookup_second);
 
       let sciencedb_id_first = first_record.id;
       let sciencedb_id_second =  second_record.id;
